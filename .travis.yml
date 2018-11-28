@@ -13,11 +13,7 @@ script:
   - gcloud version
   - ./gradlew assembleRelease --stacktrace --no-daemon
 after_script:
-  - gcloud firebase test android run \
-	--type instrumentation \
-	--test ./app-debug-androidTest.apk \
-	--app ./Radium-v1.6.0.apk \
-	--device model=Nexus6,version=25,locale=en,orientation=portrait \ 
+  - gcloud firebase test android run --type instrumentation --test ./app-debug-androidTest.apk --app ./Radium-v1.6.0.apk --device model=Nexus6,version=25,locale=en,orientation=portrait 
 branches:
   only:
   - master
