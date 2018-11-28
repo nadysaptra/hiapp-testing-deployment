@@ -1,4 +1,4 @@
-language: android
+language: bash
 jdk: oraclejdk8
 sudo: required
 dist: trusty
@@ -11,8 +11,9 @@ script:
   # Add gcloud to $PATH
   - source /home/travis/google-cloud-sdk/path.bash.inc
   - gcloud version
-after_script:
-  - gcloud firebase test android run --type instrumentation --test ./app-debug-androidTest.apk --app ./Radium-v1.6.0.apk --device model=Nexus6,version=25,locale=en,orientation=portrait 
+  - gcloud auth activate-service-account --key-file=credentials.json
+  - gcloud config set project app-chat-98f8b
+  - gcloud firebase test android run --type instrumentation --test ./app-debug-androidTest.apk --app ./Radium-v1.9.0.apk --device model=Nexus6,version=25,locale=en,orientation=portrait 
 branches:
   only:
   - master
