@@ -12,7 +12,7 @@ script:
   - gcloud version
   - gcloud auth activate-service-account --key-file=credentials.json
   - gcloud config set project app-chat-98f8b
-  - ./travis_wait -i 60 -l 2400 -x 0 -a 1 "gcloud firebase test android run --type instrumentation --test ./app-debug-androidTest.apk --app ./Radium-v1.9.0.apk --device model=Nexus5X,version=25,locale=en,orientation=portrait" "build.log"
+  - gcloud firebase test android run --type instrumentation --test ./app-debug-androidTest.apk --app ./Radium-v1.9.0.apk --device model=Nexus5X,version=25,locale=en,orientation=portrait
 branches:
   only:
   - master
